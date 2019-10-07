@@ -1,0 +1,389 @@
+<html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: rgb(206,24,21);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+.k{
+font-family: Segoe UI Black;
+}
+td a {
+    display:block;
+    width:100%;
+}
+a:link {
+  text-decoration:none;
+}
+td:hover {
+  background-color: rgb(206,24,21);
+}
+td {
+  width: 16.66666% ;
+}
+img.mySlides1{margin-left:25px;
+}
+img.mySlides2{margin-left:25px;
+}
+</style>
+<body>
+<br>
+<img src="Capture3.png" width="100%"></img>
+<hr>
+<div align="right" style="background-color:rgb(206,24,21)"><font class="k" size=90>SPORTS&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font>
+<button onclick="document.getElementById('id01').style.display='block'" style="border-radius: 0px;
+  background-color: black;
+  border: none;
+  color: white;
+  text-align: center;
+font-family: Century Gothic;
+font-size:27px;"
+>ADD PHOTOS</button><br></div><br>
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate"  action="javascript:myFunction();" method="post" enctype="multipart/form-data">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+<img src="1.jpg" width="100%"></img>
+<div style="background-color:rgb(206,24,21)"><p style="font-size:25px"><center>You can add photos for helping this website improve. The image will be added to the website after proper inspection to ensure the genuinity of the image. You will receive a mail once your image gets approved. </center></p></div>
+
+<center><p style="font-size:30px">THANKYOU for your input!</p></center>
+     <h1 style="margin-left:15px">Details:</h1>    
+</div>
+
+    <div class="container">
+      <label for="name"><b>Full Name</b></label>
+      <input type="text" placeholder="Enter Name" name="name" required><br><br>
+<label for="contact"><b>Phone no.</b></label>
+      <input type="text" placeholder="Enter Contact no." name="contact" required><br><br>
+<label for="email"><b>Email Address</b></label>
+      <input type="text" placeholder="Enter Email Address" name="email" required><br><br>
+
+<b>Select image to upload</b><br><br>
+    <input type="file" name="fileToUpload" id="fileToUpload" required>
+    
+
+<br><br>
+
+
+
+      <button type="submit" style="background-color: rgb(206,24,21);
+  color: White;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;"><font style="font-size:20">Submit</font></button>
+
+<script>
+function myFunction() {
+  var txt;
+  if (confirm("Do you want to upload this image?")) {
+    alert("Image uploaded!");
+  }
+}
+</script>
+     
+</div>
+  </form>
+</div>
+
+
+<?php
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+}
+?>
+<table width="100%" bgcolor="black" fontcolor="white">
+<tr>
+
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Infrastructure5.html"><font color="white">Home</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Buildings.html"><font color="white">Buildings</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Cafeterias.html"><font color="white">Cafeterias</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Hostels.html"><font color="white">Hostels</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Amenities.html"><font color="white">Amenities</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Feedback.html"><font color="white">Feedback</font></a></td>
+</tr>
+</table>
+
+
+
+
+
+<center>
+<br>
+
+<font style="font-size:20px">The University provides many sports facilities for the students to engage in sports activities and focus towards their fitness and sports skills. This provides students with recreation and diversion from everyday burden! Both indoor and outdoor facilties are provided as shown below:</font>
+<br><br>
+
+<div style="background-color:rgb(206,24,21)">
+<font style="font-size:40;font-family: Segoe UI Black"><b>OUTDOOR SPORTS</b></font></div>
+<br>
+ <img src="ba.jpg" width="45%" height="75%"></img>
+<br>
+<hr>
+
+<font style="font-size:35;font-family: Segoe UI Black">BASKETBALL COURT</font>
+<br>
+
+
+ <img src="spoba.jpg" width="45%" height="65%"></img>
+<br>
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">TENNIS COURT</font>
+<br>
+
+<img src="spote.jpg" width="45%" height="65%"></img>
+<br>
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">VOLLEYBALL  COURT</font>
+<br>
+
+<img src="spovo.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">HOCKEY COURT</font>
+<br>
+ <img src="spoho.jpg" width="45%" height="65%"></img>
+<br>
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">FOOTBALL FEILD</font>
+<br>
+
+<img src="football.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">CRICKET GROUND</font>
+<br>
+
+<img src="cricket.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+
+<div style="background-color:rgb(206,24,21)">
+<font style="font-size:40;font-family: Segoe UI Black"><b>SPORTORIUM</b></font></div><br>
+<br>
+ <img src="spoin.jpg" width="45%" height="65%"></img>
+<br>
+<br>
+
+<font style="font-size:35;font-family: Segoe UI Black">POOL TABLES</font>
+<br>
+
+<img src="spopo.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">SNOOKER TABLES</font>
+<br>
+
+<img src="sposn.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">SQUASH COURT</font>
+<br>
+
+<img src="sposq.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">BADMINTON COURTS</font>
+<br>
+
+<img src="spobad.jpg" width="45%" height="65%"></img>
+<img src="spotop.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">TABLE TENNIS TABLES</font>
+<br>
+
+<img src="spott.jpg" width="45%" height="65%"></img>
+
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">GYM</font>
+<br>
+
+<img src="spogy.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+<font style="font-size:35;font-family: Segoe UI Black">DANCE ROOM</font>
+<br>
+
+<img src="spoda.jpg" width="45%" height="65%"></img>
+<br>
+
+<hr>
+
+
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="background-color:black; height:200px">
+<br>
+<br>
+<center>
+<font color="white" style="font-family: Century Gothic;font-size:25px">Find us on:</font>
+<br>
+<img src="social.png" usemap="#social">
+<map name="social">
+<area shape="rectangle" coords="0,0,47.5,50" href="https://www.facebook.com/ChitkaraU" target="_blank">
+<area shape="rectangle" coords="47.5,0,95,50" href="https://twitter.com/chitkarau" target="_blank">
+</map></img></center></div>

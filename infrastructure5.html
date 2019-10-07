@@ -1,0 +1,82 @@
+<html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+p{
+font-family: Segoe UI Black;
+}
+td a {
+    display:block;
+    width:100%;
+}
+a:link {
+  text-decoration:none;
+}
+td:hover {
+  background-color: rgb(206,24,21);
+}
+td {
+  width: 16.66666% ;
+}
+</style>
+<body>
+<br>
+<img src="Capture3.png" width="100%"></img>
+
+
+<hr>
+
+<div style="background-color:rgb(206,24,21)"><center><p><font size=90>INFRASTURCTURE</font></p></center></div>
+<table width="100%" bgcolor="black" fontcolor="white">
+<tr>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Buildings.html"><font color="white">Buildings</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Cafeterias.html"><font color="white">Cafeterias</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Hostels.html"><font color="white">Hostels</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="sports.html"><font color="white">Sports</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Amenities.html"><font color="white">Amenities</font></a></td>
+<td align="center" style="font-family: Century Gothic;font-size:35px"><a href="Feedback.html"><font color="white">Feedback</font></a></td>
+</tr>
+</table>
+<br>
+<img src="Banner1.jpg" width="49.5%"></img>
+  <img class="mySlides w3-animate-right" src="Campus1.jpg" width="49.5%" align="right">
+  <img class="mySlides w3-animate-right" src="Campus2.jpg" width="49.5%" align="right">
+  <img class="mySlides w3-animate-right" src="Campus3.jpg" width="49.5%" align="right">
+  <img class="mySlides w3-animate-right" src="Campus4.jpg" width="49.5%" align="right">
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000);
+}
+</script>
+<hr>
+<center><font style="font-size:20px">In order to achieve its ambition of being a world-class education provider,
+Chitkara University (CU) is committed to significant enhancement of its facilities and buildings,
+essential for world-class research and all-round development of students
+. The University has an extremely modern and state-of-the-art
+ infrastructure that goes a long way in facilitating a number of services for the students as well as the staff members.</font></center>
+  
+<hr>
+<div style="background-color:black; height:200px">
+<br>
+<br>
+<center>
+<font color="white" style="font-family: Century Gothic;font-size:25px">Find us on:</font>
+<br>
+<img src="social.png" usemap="#social">
+<map name="social">
+<area shape="rectangle" coords="0,0,47.5,50" href="https://www.facebook.com/ChitkaraU" target="_blank">
+<area shape="rectangle" coords="47.5,0,95,50" href="https://twitter.com/chitkarau" target="_blank">
+</map></img></center></div>
+</body>
+</html>
